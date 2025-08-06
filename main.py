@@ -5,9 +5,12 @@ from random import choice, uniform
 with open("messages.txt", "r", encoding="utf-8") as f:
     messages = [line.strip() for line in f if line.strip()]
 
-x_click = 410
-y_click = 986
-num_messages = 4
+chat_location = pyautogui.locateCenterOnScreen("chat_box.png", confidence=0.8)
+if chat_location is None:
+    raise Exception("Chat box not found!")
+x_click, y_click = chat_location
+
+num_messages = 10
 
 for i in range(num_messages):
     sleep(uniform(0.5, 2))
